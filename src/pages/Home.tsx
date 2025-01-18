@@ -1,7 +1,15 @@
+import AdvertisementSection from "../component/AdvertisementSection";
+import RoomCard from "../component/RoomCard";
+import Testimonials from "../component/Testimonials";
+import Banner from "./Banner";
+
 const Home = () => {
   return (
     <div>
-      <h1>This is home page</h1>
+      <Banner></Banner>
+      <AdvertisementSection></AdvertisementSection>
+      <RoomCard></RoomCard>
+      <Testimonials></Testimonials>
     </div>
   );
 };

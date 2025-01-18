@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer bg-gray-700 text-white  text-base-content p-10">
       <nav>
         <h6 className="footer-title">Contact Information</h6>
-        <a className="link link-hover"></a>roombooking@gmail.com
+        <a className="link link-hover">roombooking@gmail.com</a>
         <a className="link link-hover">880 1234 567 890</a>
         <a className="link link-hover">Mirpur 1212, Dhaka, Bangladesh</a>
       </nav>

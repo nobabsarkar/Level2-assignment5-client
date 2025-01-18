@@ -24,13 +24,14 @@ export const router = createBrowserRouter([
         element: <Booking></Booking>,
       },
       {
-        path: "/contact",
-        element: <Contact></Contact>,
-      },
-      {
         path: "/about",
         element: <About></About>,
       },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+
       {
         path: "/login",
         element: <Login></Login>,
