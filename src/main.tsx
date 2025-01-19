@@ -4,13 +4,19 @@ import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/routes.tsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.ts";
+import { Toaster } from "sonner";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div className="max-w-screen-xl mx-auto">
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+        <Toaster></Toaster>
+      </Provider>
     </div>
   </React.StrictMode>
 );
