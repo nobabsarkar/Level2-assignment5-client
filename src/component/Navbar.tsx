@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   const navLinks = (
-    <div className="flex items-center">
+    <>
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -31,14 +31,14 @@ const Navbar = () => {
       {user ? (
         <>
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-circle">
+            <div tabIndex={0} role="button" className=" btn-circle">
               <a>
                 <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
               </a>
             </div>
             <ul
               tabIndex={0}
-              className="menu text-black  menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+              className="menu p-3 text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
                 <a>My Bookings</a>
@@ -59,7 +59,7 @@ const Navbar = () => {
           </li>
         </>
       )}
-    </div>
+    </>
   );
 
   return (
@@ -84,7 +84,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {navLinks}
           </ul>
