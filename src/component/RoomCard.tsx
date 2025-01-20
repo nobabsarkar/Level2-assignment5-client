@@ -10,7 +10,7 @@ const RoomCard = () => {
       <h1 className="text-4xl text-center font-semibold mb-10">
         Featured Rooms
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
         <div className="card bg-base-100 shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl">
           <figure>
             <img src={room1} alt="Shoes" />

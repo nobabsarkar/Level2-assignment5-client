@@ -61,6 +61,7 @@ const Navbar = () => {
         </div>
         <NavLink to={"/"} className="btn btn-ghost text-xl">
           <img style={{ width: "50px" }} src={logo} alt="" />
+          <h1 className="text-white font-bold">Booking Room</h1>
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex ">

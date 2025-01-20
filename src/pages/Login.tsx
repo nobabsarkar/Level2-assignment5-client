@@ -1,25 +1,41 @@
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { RootState } from "../redux/store";
+import { useLoginMutation } from "../redux/api/auth/authApi";
+import { FormEvent } from "react";
+import { setEmail, setPassword } from "../redux/features/LoginSlice";
+import { toast } from "sonner";
+
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const { email, password } = useAppSelector((state: RootState) => state.login);
+  const [login] = useLoginMutation();
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const data = await login({ email, password });
+    if (data.data.success) {
+      toast(data?.data?.message);
+    }
+  };
+
   return (
     <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
+      <div className="hero-content flex-col w-2/3">
+        <h1 className="text-5xl font-bold">Login now!</h1>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form className="card-body">
+          <form onClick={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="Email"
                 className="input input-bordered"
+                onChange={(e) => dispatch(setEmail(e.target.value))}
+                value={email}
                 required
               />
             </div>
@@ -29,8 +45,10 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 className="input input-bordered"
+                onChange={(e) => dispatch(setPassword(e.target.value))}
+                value={password}
                 required
               />
               <label className="label">
@@ -44,6 +62,12 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <p className="text-center mt-2">
+              Are you new please?
+              <Link className="text-pink-500 font-bold" to="/register">
+                Register
+              </Link>
+            </p>
           </form>
         </div>
       </div>
