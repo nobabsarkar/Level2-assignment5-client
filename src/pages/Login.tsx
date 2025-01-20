@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useLoginMutation } from "../redux/api/auth/authApi";
 import { FormEvent } from "react";
 import { setEmail, setPassword } from "../redux/features/LoginSlice";
 import { toast } from "sonner";
+import { setUser } from "../redux/features/MeetingRoom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { email, password } = useAppSelector((state: RootState) => state.login);
   const [login] = useLoginMutation();
@@ -15,8 +17,10 @@ const Login = () => {
     e.preventDefault();
 
     const data = await login({ email, password });
+    console.log(data);
     if (data.data.success) {
-      toast(data?.data?.message);
+      dispatch(setUser(toast(data?.data?.message)));
+      navigate("/");
     }
   };
 

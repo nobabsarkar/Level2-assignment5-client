@@ -1,10 +1,21 @@
 import { UserCircleIcon } from "@heroicons/react/16/solid";
 import logo from "../assets/meeting.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { logOut } from "../redux/features/MeetingRoom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.meetingRoom.user);
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    navigate("/login");
+  };
+
   const navLinks = (
-    <>
+    <div className="flex items-center">
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -17,19 +28,38 @@ const Navbar = () => {
       <li>
         <Link to="/contact">Contact Us</Link>
       </li>
-
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to="/register">Register</Link>
-      </li>
-      <li>
-        <a>
-          <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
-        </a>
-      </li>
-    </>
+      {user ? (
+        <>
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-circle">
+              <a>
+                <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
+              </a>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu text-black  menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+            >
+              <li>
+                <a>My Bookings</a>
+              </li>
+              <li>
+                <a onClick={handleLogOut}>LotOut</a>
+              </li>
+            </ul>
+          </div>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>
+      )}
+    </div>
   );
 
   return (

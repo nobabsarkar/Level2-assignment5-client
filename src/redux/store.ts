@@ -3,6 +3,7 @@ import registerReducer from "./features/RegisterSlice";
 import { baseApi } from "./api/baseApi";
 import loginReducer from "./features/LoginSlice";
 import meetingRoomRequcer from "./features/MeetingRoom";
+// import logOutReducer from "./features/";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     register: registerReducer,
     login: loginReducer,
     meetingRoom: meetingRoomRequcer,
+    // logOut:logOutReducer,
   },
   middleware: (getDefaultMiddlewere) =>
     getDefaultMiddlewere().concat(baseApi.middleware),

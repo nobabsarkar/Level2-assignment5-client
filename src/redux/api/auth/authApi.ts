@@ -17,11 +17,20 @@ const authApi = baseApi.injectEndpoints({
       }),
     }),
     meeting: builder.query({
-      query: () => ({
-        url: "/bookings",
-        method: "GET",
-      }),
+      query: (params) => {
+        const queryString = params?.name ? `?name=${params.name}` : "";
+        return {
+          url: `/bookings/${queryString}`,
+          method: "GET",
+        };
+      },
     }),
+    // meeting: builder.query({
+    //   query: () => ({
+    //     url: "/bookings",
+    //     method: "GET",
+    //   }),
+    // }),
   }),
 });
 
