@@ -6,6 +6,7 @@ import { FormEvent } from "react";
 import { setEmail, setPassword } from "../redux/features/LoginSlice";
 import { toast } from "sonner";
 import { setUser } from "../redux/features/MeetingRoom";
+import { verifyToken } from "../utils/verifyToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,12 +17,20 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const data = await login({ email, password });
-    console.log(data);
-    if (data.data.success) {
-      dispatch(setUser(toast(data?.data?.message)));
+    const data = await login({ email, password }).unwrap();
+
+    const user = verifyToken(data.data.accessToken);
+
+    if (data.success) {
+      dispatch(setUser({ user: user, token: data.data.accessToken }));
+      toast(data?.message);
       navigate("/");
     }
+
+    // if (data.success) {
+    //   dispatch(setUser(toast(data?.message)));
+    //   navigate("/");
+    // }
   };
 
   return (

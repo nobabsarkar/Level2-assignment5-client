@@ -8,6 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.meetingRoom.user);
+  console.log(user);
 
   const handleLogOut = () => {
     dispatch(logOut());
