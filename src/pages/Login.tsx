@@ -55,14 +55,12 @@ const Login = () => {
                 value={password}
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+              <button
+                type="submit"
+                className="btn text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+              >
                 Login
               </button>
             </div>
