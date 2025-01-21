@@ -7,13 +7,12 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
+import SingleBooking from "../component/SingleBooking";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-
     element: <MainLayout></MainLayout>,
-
     children: [
       {
         path: "/",
@@ -30,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/singleBooking/:id",
+        element: <SingleBooking></SingleBooking>,
       },
 
       {

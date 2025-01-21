@@ -2,13 +2,12 @@ import { UserCircleIcon } from "@heroicons/react/16/solid";
 import logo from "../assets/meeting.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { logOut } from "../redux/features/MeetingRoom";
+import { logOut } from "../redux/api/auth/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.meetingRoom.user);
-  console.log(user);
+  const user = useAppSelector((state) => state.auth.user);
 
   const handleLogOut = () => {
     dispatch(logOut());
@@ -29,26 +28,51 @@ const Navbar = () => {
       <li>
         <Link to="/contact">Contact Us</Link>
       </li>
-      {user ? (
+      {user?.role ? (
         <>
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className=" btn-circle">
-              <a>
-                <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
-              </a>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu p-3 text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a>My Bookings</a>
-              </li>
-              <li>
-                <a onClick={handleLogOut}>LotOut</a>
-              </li>
-            </ul>
-          </div>
+          {user?.role === "ADMIN" ? (
+            <>
+              <div className="dropdown">
+                <div tabIndex={0} role="button" className=" btn-circle">
+                  <a>
+                    <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
+                  </a>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu p-3 text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <a>Dashboard</a>
+                  </li>
+                  <li>
+                    <a onClick={handleLogOut}>LotOut</a>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="dropdown">
+                <div tabIndex={0} role="button" className=" btn-circle">
+                  <a>
+                    <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
+                  </a>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu p-3 text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <a>My Bookings</a>
+                  </li>
+                  <li>
+                    <a onClick={handleLogOut}>LotOut</a>
+                  </li>
+                </ul>
+              </div>
+            </>
+          )}
         </>
       ) : (
         <>

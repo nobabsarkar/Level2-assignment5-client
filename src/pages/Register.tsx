@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   setAddress,
@@ -13,6 +13,7 @@ import { useSignUpMutation } from "../redux/api/auth/authApi";
 import { toast } from "sonner";
 
 const Register = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { name, email, password, phone, address } = useAppSelector(
     (state: RootState) => state.register
@@ -23,8 +24,10 @@ const Register = () => {
   const handleSumit = async (e: FormEvent) => {
     e.preventDefault();
     const user = await signUp({ name, email, password, phone, address });
+
     if (user.data.success) {
       toast.success(user.data.message);
+      navigate("/");
     }
   };
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const MeetingRoomDetails = ({ data }: any) => {
   return (
@@ -10,9 +12,12 @@ const MeetingRoomDetails = ({ data }: any) => {
         <p>Capacity: {data?.capacity} People</p>
         <p>Price: ${data?.pricePerSlot}</p>
         <div className="card-actions">
-          <button className="btn text-white font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full">
+          <Link
+            to={`/singleBooking/${data?._id}`}
+            className="btn text-white font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full"
+          >
             See Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

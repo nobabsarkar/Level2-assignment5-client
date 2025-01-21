@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/routes.tsx";
@@ -14,9 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <div className="max-w-screen-xl mx-auto">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <RouterProvider router={router}>
-            <App />
-          </RouterProvider>
+          <RouterProvider router={router}></RouterProvider>
         </PersistGate>
         <Toaster></Toaster>
       </Provider>

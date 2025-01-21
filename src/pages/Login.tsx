@@ -3,10 +3,14 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useLoginMutation } from "../redux/api/auth/authApi";
 import { FormEvent } from "react";
-import { setEmail, setPassword } from "../redux/features/LoginSlice";
+import {
+  resetLoginState,
+  setEmail,
+  setPassword,
+} from "../redux/features/LoginSlice";
 import { toast } from "sonner";
-import { setUser } from "../redux/features/MeetingRoom";
 import { verifyToken } from "../utils/verifyToken";
+import { setUser } from "../redux/api/auth/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,6 +31,8 @@ const Login = () => {
       navigate("/");
     }
 
+    dispatch(resetLoginState());
+
     // if (data.success) {
     //   dispatch(setUser(toast(data?.message)));
     //   navigate("/");
@@ -36,7 +42,7 @@ const Login = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col w-2/3">
-        <h1 className="text-5xl font-bold">Login now!</h1>
+        <h1 className="text-5xl font-bold mb-10">Login now!</h1>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onClick={handleSubmit} className="card-body">
             <div className="form-control">
