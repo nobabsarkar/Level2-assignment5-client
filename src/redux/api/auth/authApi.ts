@@ -31,6 +31,12 @@ const authApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    singleUser: builder.query({
+      query: (id) => ({
+        url: `/auth/${id}`,
+        method: "GET",
+      }),
+    }),
     // meeting: builder.query({
     //   query: () => ({
     //     url: "/bookings",
@@ -45,4 +51,5 @@ export const {
   useLoginMutation,
   useMeetingQuery,
   useSingleMeetingQuery,
+  useSingleUserQuery,
 } = authApi;

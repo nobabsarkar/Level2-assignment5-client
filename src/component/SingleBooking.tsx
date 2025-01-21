@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSingleMeetingQuery } from "../redux/api/auth/authApi";
 
 const SingleBooking = () => {
@@ -15,9 +15,11 @@ const SingleBooking = () => {
         <p>Capacity: {data?.data?.capacity} People</p>
         <p>Price: ${data?.data?.pricePerSlot}</p>
         <div className="card-actions justify-end">
-          <button className="btn text-white font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-            Book Now
-          </button>
+          <Link to="/bookingPage">
+            <button className="btn text-white font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+              Book Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

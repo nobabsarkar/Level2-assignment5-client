@@ -8,6 +8,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
 import SingleBooking from "../component/SingleBooking";
+import ProtectedRoute from "../component/layouts/ProtectedRoute";
+import BookingPage from "../component/BookingPage";
 
 export const router = createBrowserRouter([
   {
@@ -32,9 +34,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/singleBooking/:id",
-        element: <SingleBooking></SingleBooking>,
+        element: (
+          <ProtectedRoute>
+            <SingleBooking></SingleBooking>
+          </ProtectedRoute>
+        ),
       },
-
+      {
+        path: "/bookingPage",
+        element: <BookingPage></BookingPage>,
+      },
       {
         path: "/login",
         element: <Login></Login>,

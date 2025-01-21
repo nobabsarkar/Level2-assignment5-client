@@ -33,7 +33,11 @@ const Navbar = () => {
           {user?.role === "ADMIN" ? (
             <>
               <div className="dropdown">
-                <div tabIndex={0} role="button" className=" btn-circle">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="flex items-center btn-circle"
+                >
                   <a>
                     <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
                   </a>
@@ -54,7 +58,7 @@ const Navbar = () => {
           ) : (
             <>
               <div className="dropdown">
-                <div tabIndex={0} role="button" className=" btn-circle">
+                <div tabIndex={0} role="button" className="btn ">
                   <a>
                     <UserCircleIcon className="size-7 text-black"></UserCircleIcon>
                   </a>
@@ -120,7 +124,7 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex ">
-        <ul className="menu menu-horizontal px-1 text-white font-bold">
+        <ul className="menu flex items-center menu-horizontal px-1 text-white font-bold">
           {navLinks}
         </ul>
       </div>
