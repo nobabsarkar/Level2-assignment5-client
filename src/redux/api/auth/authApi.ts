@@ -26,8 +26,8 @@ const authApi = baseApi.injectEndpoints({
       },
     }),
     singleMeeting: builder.query({
-      query: (params) => ({
-        url: `/bookings/${params.id}`,
+      query: (id) => ({
+        url: `/bookings/${id}`,
         method: "GET",
       }),
     }),

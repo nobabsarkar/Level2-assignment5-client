@@ -25,7 +25,7 @@ const Register = () => {
     e.preventDefault();
     const user = await signUp({ name, email, password, phone, address });
 
-    if (user.data.success) {
+    if (await user.data.success) {
       toast.success(user.data.message);
       navigate("/");
     }
