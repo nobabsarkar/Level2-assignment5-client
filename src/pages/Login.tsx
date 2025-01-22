@@ -32,11 +32,6 @@ const Login = () => {
     }
 
     dispatch(resetLoginState());
-
-    // if (data.success) {
-    //   dispatch(setUser(toast(data?.message)));
-    //   navigate("/");
-    // }
   };
 
   return (
