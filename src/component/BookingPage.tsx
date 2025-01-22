@@ -1,24 +1,20 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 import { useCurrentUser } from "../redux/api/auth/authSlice";
 import { useAppSelector } from "../redux/hooks";
 
 const BookingPage = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
 
   const userData = useAppSelector(useCurrentUser);
-  console.log(userData);
 
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="text-center lg:text-left border-2">
-          <DatePicker
+          {/* <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-          />
+          /> */}
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form className="card-body">
@@ -30,7 +26,7 @@ const BookingPage = () => {
                 type="email"
                 placeholder="name"
                 className="input input-bordered"
-                defaultValue={userData?.name}
+                // defaultValue={userData?.name}
                 readOnly
                 required
               />

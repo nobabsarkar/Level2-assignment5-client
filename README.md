@@ -1,5 +1,21 @@
 # React + TypeScript + Vite
 
+Project Setup: clone the repository open the project and open the terminal and install all tecnology and npm package.
+
+Project Name: Meeting Room Booking System for Co-working spaces
+
+Live URL: https://assignment-client-5.vercel.app/
+
+Features: Basically i implement signup and signin system and i implement user and admin system. user can booking room. user can see room details.
+
+Technology: React, Redux, TypeScript, Tailwind css
+
+User Email: user@gmail.com
+User Password: 123456
+
+Admin Email: admin@gmail.com
+Admin Password: 123456
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -17,12 +33,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
