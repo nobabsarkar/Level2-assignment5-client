@@ -30,13 +30,6 @@ const authApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-
-    // meeting: builder.query({
-    //   query: () => ({
-    //     url: "/bookings",
-    //     method: "GET",
-    //   }),
-    // }),
   }),
 });
 
