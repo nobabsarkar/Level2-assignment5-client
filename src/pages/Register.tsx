@@ -26,8 +26,8 @@ const Register = () => {
     const user = await signUp({ name, email, password, phone, address });
 
     if (await user.data.success) {
-      toast.success(user.data.message);
-      navigate("/");
+      toast.success("Please Logn Now");
+      navigate("/login");
     }
   };
 

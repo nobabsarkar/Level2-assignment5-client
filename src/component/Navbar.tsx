@@ -67,10 +67,10 @@ const Navbar = () => {
                   tabIndex={0}
                   className="menu p-3 text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 >
-                  <li>
+                  <li className="btn">
                     <a>My Bookings</a>
                   </li>
-                  <li>
+                  <li className="btn mt-3">
                     <a onClick={handleLogOut}>LotOut</a>
                   </li>
                 </ul>

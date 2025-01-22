@@ -5,26 +5,16 @@ import MeetingRoomDetails from "./MeetingRoomDetails";
 import { FormEvent, useState } from "react";
 
 const Booking = () => {
-  // const [search, setSearch] = useState("");
-  // const { data } = useMeetingQuery({ name: search });
-
-  // console.log(search);
-
-  // const handleSearch = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   const input = (e.target as HTMLInputElement).value;
-  //   setSearch(input);
-  // };
-
   const [search, setSearch] = useState("");
+  const data = useMeetingQuery({ search });
 
-  // Make the API call with search term
-  const data = useMeetingQuery({ name: search });
-
-  const handleSearchChange = (e: FormEvent) => {
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
     const input = (e.target as HTMLInputElement).value;
     setSearch(input);
   };
+
+  // const data = useMeetingQuery({});
 
   return (
     <div>
@@ -33,8 +23,7 @@ const Booking = () => {
           <input
             className="input input-bordered join-item"
             placeholder="Search"
-            value={search}
-            onChange={handleSearchChange}
+            onChange={handleSearch}
           />
         </div>
 

@@ -18,9 +18,8 @@ const authApi = baseApi.injectEndpoints({
     }),
     meeting: builder.query({
       query: (params) => {
-        const queryString = params?.name ? `?name=${params.name}` : "";
         return {
-          url: `/bookings/${queryString}`,
+          url: `/bookings?search=${params.search}`,
           method: "GET",
         };
       },
@@ -31,12 +30,7 @@ const authApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    singleUser: builder.query({
-      query: (id) => ({
-        url: `/auth/${id}`,
-        method: "GET",
-      }),
-    }),
+
     // meeting: builder.query({
     //   query: () => ({
     //     url: "/bookings",
@@ -51,5 +45,4 @@ export const {
   useLoginMutation,
   useMeetingQuery,
   useSingleMeetingQuery,
-  useSingleUserQuery,
 } = authApi;

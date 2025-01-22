@@ -2,20 +2,19 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { useSingleUserQuery } from "../redux/api/auth/authApi";
-import { useParams } from "react-router-dom";
+import { useCurrentUser } from "../redux/api/auth/authSlice";
+import { useAppSelector } from "../redux/hooks";
 
 const BookingPage = () => {
   const [startDate, setStartDate] = useState(new Date());
 
-  const { id } = useParams();
-  const { data } = useSingleUserQuery(id);
-  console.log(data);
+  const userData = useAppSelector(useCurrentUser);
+  console.log(userData);
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
-        <div className="text-center lg:text-left ">
+        <div className="text-center lg:text-left border-2">
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -25,10 +24,36 @@ const BookingPage = () => {
           <form className="card-body">
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="email"
+                placeholder="name"
+                className="input input-bordered"
+                defaultValue={userData?.name}
+                readOnly
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                placeholder="email"
+                className="input input-bordered"
+                defaultValue={userData?.email}
+                readOnly
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Phone</span>
+              </label>
+              <input
+                type="text"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -36,22 +61,19 @@ const BookingPage = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Address</span>
               </label>
               <input
-                type="password"
-                placeholder="password"
+                type="text"
+                placeholder="address"
                 className="input input-bordered"
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                Booking
+              </button>
             </div>
           </form>
         </div>
